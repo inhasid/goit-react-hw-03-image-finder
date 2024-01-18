@@ -19,26 +19,3 @@ const ImageGallery = ({ showModal, items }) => {
 };
 
 export default ImageGallery;
-
-
-
-
-
-
-
-
-
-
-// const ImageGallery = ({showModal, items}) => {
-//     const elements  = items.map(({ id, webformatURL, largeImageURL }) => <li key={id} onClick={()=> showModal({largeImageURL})} className={styles.item}>
-//             <img src={webformatURL} alt="" loading="lazy" />
-//         </li>);
-
-//     return (
-//         (<ul className={styles.list}>
-//             {elements}
-//         </ul>)
-//     )
-// }
-
-// export default ImageGallery;

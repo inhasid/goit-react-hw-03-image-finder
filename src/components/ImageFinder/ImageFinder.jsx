@@ -81,6 +81,7 @@ class ImageFinder extends Component {
         const { handleSearch, loadMore, showModal, closeModal } = this;
         const { images, loading, error, modalOpen, largeImage } = this.state;
         const isImages = Boolean(images.length);
+        const isMoreImages = Boolean(images.length % 12 === 0);
 
         return (
             <>
@@ -88,7 +89,7 @@ class ImageFinder extends Component {
                 {error && <p className={styles.error}>{error}</p>}
                 {loading && <Loader />}
                 {isImages && <ImageGallery showModal={showModal} items={images} />}
-                {isImages && <div className={styles.loadMoreWrapper}>
+                {isImages && isMoreImages && <div className={styles.loadMoreWrapper}>
                     <Button onClick={loadMore} type="button">Load more</Button></div>}
                 {modalOpen && <Modal largeImage={largeImage} close={closeModal}><img src={largeImage} alt="" className={styles.img} /></Modal>}
             
@@ -98,71 +99,3 @@ class ImageFinder extends Component {
 }
 
 export default ImageFinder;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // async componentDidMount() {
-    //     this.setState({
-    //         loading: true,
-    //     })
-        
-    //     try {
-    //         const respImage  = await getAllImages();
-    //         const { hits } = respImage.data;
-    //         this.setState({
-    //             images: hits?.length ? hits : [],
-    //         })
-    //     }
-    //     catch(error) {
-    //         this.setState({
-    //             error: error.message
-    //         })
-    //     }
-    //     finally {
-    //         this.setState({
-    //             loading: false,
-    //         })
-    //     }   
-    
-    // componentDidMount() {
-    //     this.setState({
-    //         loading: true
-    //     })
-    //     getAllImages()
-    //         .then((respImage) => {
-    //             const { hits } = respImage.data;
-    //             this.setState({
-    //                 images: hits?.length ? hits : [],
-    //             })
-    //             // if (hits?.length) {
-    //             //     console.log(hits);
-    //             //     this.setState({
-    //             //         images: hits
-    //             //     })                    
-    //             //}        
-    //         })
-    //         .catch(error => {
-    //             this.setState({
-    //                 error: error.message,
-    //             })
-    //         })
-    //         .finally(()=> {
-    //             this.setState({
-    //                 loading: false,
-    //             })
-    //         })
-    
-    //}

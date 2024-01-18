@@ -24,7 +24,6 @@ class Modal extends Component {
     render() {
 
         const {closeModal} = this;
-      // const { close, largeImage } = this.props;
         const { children } = this.props;
         
         return createPortal(
